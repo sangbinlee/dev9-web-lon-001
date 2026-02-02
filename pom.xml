@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.dev9</groupId>
+		<artifactId>dev9-web-lon</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>dev9-web-lon-001</artifactId>
+	<packaging>war</packaging>
+	<name>dev9-web-lon-001</name>
+	<description>dev9-web-lon-001</description>
+
+
+	<dependencies>
+
+	</dependencies>
+
+<!--	todo 상위 폼으로 옴ㄹ겨야 함-->
+
+	<build>
+		<finalName>lon</finalName>
+		<plugins>
+			<!-- AntRun Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>deploy-to-wildfly</id>
+						<phase>install</phase>
+						<configuration>
+							<target>
+								<!-- WAR 파일을 WildFly deployments 폴더로 복사 -->
+								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+									todir="../../wildfly-39.0.0.Final/standalone-lon/deployments"
+									overwrite="true" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>
