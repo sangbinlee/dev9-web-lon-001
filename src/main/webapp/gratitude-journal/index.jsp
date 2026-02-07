@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>lon-001</title>
+<title>gratitude-journal</title>
 </head>
 <body>
 	lon index.jsp
@@ -16,13 +16,13 @@
 	<table border="1">
         <tr>
             <th>번호</th>
-            <th>페이지</th>
+            <th>todo 개발</th>
             <th>url</th>
         </tr>
         <tr>
-            <td>1</td>
+            <td>ing</td>
             <td>나만의 감사 일기 (Gratitude Journal)</td>
-            <td><a href="gratitude-journal">go</a></td>
+            <td><a href="gratitude-journal.jsp">go</a></td>
         </tr>
         <tr>
             <td>1</td>
