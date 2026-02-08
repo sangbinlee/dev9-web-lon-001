@@ -41,8 +41,8 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        IMAGE=ghcr.io/${{ github.repository }}/dev9-web-lon-001:latest
-        docker build -t $IMAGE ./dev9-web-lon-001
+        IMAGE=ghcr.io/${{ github.repository }}:latest
+        docker build -t $IMAGE .
         docker push $IMAGE
 
     - name: Set up kubectl
@@ -59,4 +59,4 @@ jobs:
       run: |
         kubectl apply -f k8s.yaml
         kubectl rollout status deployment/wildfly-app
-      working-directory: ./dev9-web-lon-001
+      working-directory: .
