@@ -20,9 +20,7 @@ jobs:
       with:
         java-version: '21'
         distribution: 'temurin'
-        server-id: github
-        server-username: ${{ github.actor }}
-        server-password: ${{ secrets.GITHUB_TOKEN }}
+        cache: 'maven'
 
     - name: Build with Maven (루트 기준 전체 빌드)
       run: mvn clean install -DskipTests
@@ -38,7 +36,7 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         IMAGE=ghcr.io/${{ github.repository }}/dev9-web-lon-001:latest
-        docker build -t $IMAGE ./dev9-parent/dev9-parent-web/dev9-web-lon
+        docker build -t $IMAGE ./dev9-web-lon-001
         docker push $IMAGE
 
     - name: Set up kubectl
@@ -55,3 +53,4 @@ jobs:
       run: |
         kubectl apply -f k8s.yaml
         kubectl rollout status deployment/wildfly-app
+      working-directory: ./dev9-web-lon-001
