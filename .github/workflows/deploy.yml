@@ -75,7 +75,7 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f k8s.yaml
+        kubectl apply -f deployment.yaml
         kubectl rollout status deployment/wildfly-app
       working-directory: .
       env:
