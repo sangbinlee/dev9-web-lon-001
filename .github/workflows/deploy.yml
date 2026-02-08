@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source (전체 프로젝트)
+    - name: Checkout source
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -22,9 +22,9 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
-    - name: Build with Maven (루트 기준 전체 빌드)
+    - name: Build with Maven
       run: mvn clean install -DskipTests
-      working-directory: ./dev9-parent   # 루트 pom.xml 위치
+      working-directory: ./dev9-parent
 
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
