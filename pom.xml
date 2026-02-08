@@ -4,6 +4,7 @@
 		<groupId>com.dev9</groupId>
 		<artifactId>dev9-web-lon</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath/> <!-- 로컬 경로 참조 제거 -->
 	</parent>
 	<artifactId>dev9-web-lon-001</artifactId>
 	<packaging>war</packaging>

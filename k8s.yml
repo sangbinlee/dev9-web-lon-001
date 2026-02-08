@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfly-app
+  labels:
+    app: wildfly-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wildfly-app
+  template:
+    metadata:
+      labels:
+        app: wildfly-app
+    spec:
+      containers:
+      - name: wildfly
+        image: ghcr.io/sangbinlee/dev9-web-lon-001:latest
+        ports:
+        - containerPort: 8080
+        - containerPort: 9404
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wildfly-service
+  labels:
+    app: wildfly-app
+spec:
+  selector:
+    app: wildfly-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+    - protocol: TCP
+      port: 9404
+      targetPort: 9404
+      name: metrics
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wildfly-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - diary.dev9.shop
+    secretName: wildfly-tls
+  rules:
+  - host: diary.dev9.shop
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wildfly-service
+            port:
+              number: 80
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: wildfly-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: wildfly-app
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: wildfly-servicemonitor
+  namespace: monitoring
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: wildfly-app
+  namespaceSelector:
+    matchNames:
+    - default
+  endpoints:
+  - port: metrics
+    interval: 30s
