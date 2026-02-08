@@ -28,9 +28,13 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
-    - name: Build with Maven (전체 빌드)
+    - name: Build parent modules
       run: mvn clean install -DskipTests
       working-directory: ./dev9-parent
+
+    - name: Build web module
+      run: mvn clean package -DskipTests
+      working-directory: ./dev9-web-lon-001
 
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
@@ -59,4 +63,4 @@ jobs:
       run: |
         kubectl apply -f k8s.yaml
         kubectl rollout status deployment/wildfly-app
-      working-directory: .
+      working-directory: ./dev9-web-lon-001
