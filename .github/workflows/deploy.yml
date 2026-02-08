@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout source (현재 모듈만)
+    - name: Checkout source (전체 프로젝트)
       uses: actions/checkout@v3
 
     - name: Set up JDK 21
@@ -22,8 +22,9 @@ jobs:
         server-username: ${{ github.actor }}
         server-password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build with Maven (parent는 GitHub Packages에서 가져옴)
-      run: mvn clean package -DskipTests
+    - name: Build with Maven (루트 기준 전체 빌드)
+      run: mvn clean install -DskipTests
+      working-directory: ./   # 루트 pom.xml 위치
 
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
@@ -35,7 +36,7 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         IMAGE=ghcr.io/${{ github.repository }}/dev9-web-lon-001:latest
-        docker build -t $IMAGE .
+        docker build -t $IMAGE ./dev9-parent-web/dev9-web-lon
         docker push $IMAGE
 
     - name: Set up kubectl
