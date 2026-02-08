@@ -21,6 +21,12 @@ jobs:
         repository: sangbinlee/dev9-parent
         path: dev9-parent
 
+    - name: Checkout core project
+      uses: actions/checkout@v3
+      with:
+        repository: sangbinlee/dev9-core
+        path: dev9-core
+
     - name: Set up JDK 21
       uses: actions/setup-java@v3
       with:
@@ -31,6 +37,10 @@ jobs:
     - name: Build parent modules
       run: mvn clean install -DskipTests
       working-directory: ./dev9-parent
+
+    - name: Build core module
+      run: mvn clean install -DskipTests
+      working-directory: ./dev9-core
 
     - name: Build web module
       run: mvn clean package -DskipTests
