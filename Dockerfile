@@ -4,4 +4,4 @@ COPY config.yml /opt/jboss/wildfly/config.yml
 
 ENV JAVA_OPTS="-javaagent:/opt/jboss/wildfly/jmx_prometheus_javaagent.jar=9404:/opt/jboss/wildfly/config.yml"
 
-COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/
+COPY target/*.war /opt/jboss/wildfly/standalone/deployments/
