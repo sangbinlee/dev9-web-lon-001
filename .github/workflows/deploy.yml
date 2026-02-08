@@ -69,12 +69,14 @@ jobs:
         version: 'latest'
 
     - name: Configure K8s credentials
-      run: |
-        echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
-        export KUBECONFIG=kubeconfig.yaml
+      run: echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
+      env:
+        KUBECONFIG: kubeconfig.yaml
 
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f k8s.yaml
         kubectl rollout status deployment/wildfly-app
       working-directory: .
+      env:
+        KUBECONFIG: kubeconfig.yaml
