@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세 줄 감사 일기 (Cloud)</title>
+    <title>세 줄 감사 일기 2(Cloud)</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root { --bg-color: #fdfaf5; --text-color: #4a4a4a; --accent: #8e9775; }
