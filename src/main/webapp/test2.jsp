@@ -11,7 +11,7 @@
 <%@ page import="com.dev9.lon.sample.ejb.local.*"%>
 <%@ page import="com.dev9.lon.sample.ejb.BrokerSBean"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <title>lon site</title>
 </head>
