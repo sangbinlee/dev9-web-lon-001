@@ -16,9 +16,9 @@
 		<!-- 공통 의존성은 parent에서 상속 -->
 	</dependencies>
 
-<!-- 	<build> -->
-<!-- 		<finalName>lon</finalName> -->
-<!-- 	</build> -->
+	<build>
+		<finalName>lon</finalName>
+	</build>
 
 
 </project>
