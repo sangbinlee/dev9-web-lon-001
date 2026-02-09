@@ -55,7 +55,7 @@
         	{
             	provider: 'google',
             	options: {
-					redirectTo: 'https://192.168.0.3:8443/lon/gratitude-journal/gratitude-journal.jsp'
+					redirectTo: 'https://diary.dev9.shop/dev9-web-lon-001-0.0.1-SNAPSHOT/gratitude-journal/gratitude-journal.jsp'
 				}
             }
         );
