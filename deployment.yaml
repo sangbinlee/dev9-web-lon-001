@@ -20,9 +20,9 @@ spec:
         ports:
         - containerPort: 8080
         - containerPort: 9404
-        env:
-        - name: JAVA_OPTS
-          value: "-Djava.util.logging.manager=org.jboss.logmanager.LogManager -javaagent:/opt/jboss/wildfly/jmx_prometheus_javaagent.jar=9404:/opt/jboss/wildfly/config.yml"
+#        env:
+#        - name: JAVA_OPTS
+#          value: "-Djava.util.logging.manager=org.jboss.logmanager.LogManager -javaagent:/opt/jboss/wildfly/jmx_prometheus_javaagent.jar=9404:/opt/jboss/wildfly/config.yml"
 ---
 apiVersion: v1
 kind: Service
