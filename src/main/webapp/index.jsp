@@ -8,18 +8,7 @@
 <body>
 	lon index.jsp
 
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
-	<h1>Welcome to the JSP Page lon</h1>
+	<h1>Welcome to  lon</h1>
 
 
 	<table border="1">

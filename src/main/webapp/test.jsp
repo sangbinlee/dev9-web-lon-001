@@ -28,11 +28,15 @@
 	log.debug("{} JSP 페이지 - DEBUG 로그 {} {}","■■■■■■", logName, "■■■■■■");
 	log.info("{} JSP 페이지 - INFO 로그 {} {}","■■■■■■", logName, "■■■■■■");
 	log.error("{} JSP 페이지 - ERROR 로그 {} {}","■■■■■■", logName, "■■■■■■");
+
+
+
 	%>
 
 	<%
 	System.out.println("lon 디버깅 메시지: JSP 실행됨");
 	%>
+
 
 	<%
 	Statement stmt = null;
