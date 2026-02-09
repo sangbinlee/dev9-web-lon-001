@@ -69,7 +69,7 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        IMAGE=ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:latest
+        IMAGE=ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:${{ github.sha }}
         docker build -t $IMAGE .
         docker push $IMAGE
 
