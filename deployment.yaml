@@ -23,31 +23,31 @@ spec:
           env:
             - name: JAVA_OPTS
               value: "-Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: host
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: port
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: db-config
-                  key: database
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: username
-            - name: DB_PASS
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: password
+#            - name: DB_HOST
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: db-config
+#                  key: host
+#            - name: DB_PORT
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: db-config
+#                  key: port
+#            - name: DB_NAME
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: db-config
+#                  key: database
+#            - name: DB_USER
+#              valueFrom:
+#                secretKeyRef:
+#                  name: db-secret
+#                  key: username
+#            - name: DB_PASS
+#              valueFrom:
+#                secretKeyRef:
+#                  name: db-secret
+#                  key: password
 ---
 apiVersion: v1
 kind: Service
