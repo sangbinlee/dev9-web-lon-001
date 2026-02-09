@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*, javax.naming.*, javax.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.dev9.lon.dao.Car"%>

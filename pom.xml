@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.dev9</groupId>
-		<artifactId>dev9-parent</artifactId>
+		<artifactId>dev9-web-lon</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath/> <!-- 로컬 경로 참조 제거 -->
 	</parent>
@@ -56,39 +56,39 @@ mvn clean install -Plocal
 
 -->
 
-<profiles>
-  <profile>
-    <id>local</id>
-    <activation>
-      <activeByDefault>false</activeByDefault>
-    </activation>
-    <build>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-antrun-plugin</artifactId>
-          <version>3.1.0</version>
-          <executions>
-            <execution>
-              <id>deploy-to-wildfly</id>
-              <phase>install</phase>
-              <configuration>
-                <target>
-                  <copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
-                        todir="../../wildfly-39.0.0.Final/standalone-lon/deployments"
-                        overwrite="true" />
-                </target>
-              </configuration>
-              <goals>
-                <goal>run</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </build>
-  </profile>
-</profiles>
+<!-- <profiles> -->
+<!--   <profile> -->
+<!--     <id>local</id> -->
+<!--     <activation> -->
+<!--       <activeByDefault>false</activeByDefault> -->
+<!--     </activation> -->
+<!--     <build> -->
+<!--       <plugins> -->
+<!--         <plugin> -->
+<!--           <groupId>org.apache.maven.plugins</groupId> -->
+<!--           <artifactId>maven-antrun-plugin</artifactId> -->
+<!--           <version>3.1.0</version> -->
+<!--           <executions> -->
+<!--             <execution> -->
+<!--               <id>deploy-to-wildfly</id> -->
+<!--               <phase>install</phase> -->
+<!--               <configuration> -->
+<!--                 <target> -->
+<!--                   <copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" -->
+<!--                         todir="../../wildfly-39.0.0.Final/standalone-lon/deployments" -->
+<!--                         overwrite="true" /> -->
+<!--                 </target> -->
+<!--               </configuration> -->
+<!--               <goals> -->
+<!--                 <goal>run</goal> -->
+<!--               </goals> -->
+<!--             </execution> -->
+<!--           </executions> -->
+<!--         </plugin> -->
+<!--       </plugins> -->
+<!--     </build> -->
+<!--   </profile> -->
+<!-- </profiles> -->
 
 
 </project>
