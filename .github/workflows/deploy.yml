@@ -63,20 +63,20 @@ jobs:
         docker build -t $IMAGE .
         docker push $IMAGE
 
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: 'latest'
-
-    - name: Configure K8s credentials
-      run: echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
-      env:
-        KUBECONFIG: kubeconfig.yaml
-
-    - name: Deploy to Kubernetes
-      run: |
-        kubectl apply -f deployment.yaml
-        kubectl rollout status deployment/wildfly-app
-      working-directory: .
-      env:
-        KUBECONFIG: kubeconfig.yaml
+#    - name: Set up kubectl
+#      uses: azure/setup-kubectl@v3
+#      with:
+#        version: 'latest'
+#
+#    - name: Configure K8s credentials
+#      run: echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
+#      env:
+#        KUBECONFIG: kubeconfig.yaml
+#
+#    - name: Deploy to Kubernetes
+#      run: |
+#        kubectl apply -f deployment.yaml
+#        kubectl rollout status deployment/wildfly-app
+#      working-directory: .
+#      env:
+#        KUBECONFIG: kubeconfig.yaml
