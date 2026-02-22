@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세 줄 감사 일기 3(Cloud)</title>
+    <title>세 줄 감사 일기 by Argo CD with k8s</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root { --bg-color: #fdfaf5; --text-color: #4a4a4a; --accent: #8e9775; }
@@ -23,9 +23,7 @@
 <body>
 
 <div class="container">
-    <h1>🌿 세 줄 감사 일기 333</h1>
-    <h1>🌿 세 줄 감사 일기 222</h1>
-    <h1>🌿 세 줄 감사 일기 222</h1>
+    <h1>🌿 세 줄 감사 일기 </h1>
 
     <div id="loginSection">
         <p style="text-align: center;">나만의 일기장을 클라우드에 저장하세요.</p>
