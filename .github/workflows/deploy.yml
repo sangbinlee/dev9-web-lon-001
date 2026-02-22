@@ -12,8 +12,8 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: 
-      contents: write # GitHub Actions가 저장소에 push할 수 있도록 권한 부여
+	
+	
     steps:
     - name: Checkout web project
       uses: actions/checkout@v3
@@ -72,7 +72,7 @@ jobs:
       run: |
         IMAGE=ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:${{ github.sha }}
         docker build -t $IMAGE .
-        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin		
+        		
         docker push $IMAGE
 
     - name: Check deployments directory inside container
