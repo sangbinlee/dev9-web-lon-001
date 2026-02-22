@@ -73,6 +73,11 @@ jobs:
         docker build -t $IMAGE .
         docker push $IMAGE
 
+    - name: Check deployments directory inside container
+      run: |
+        IMAGE=ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:${{ github.sha }}
+        docker run --rm $IMAGE ls -l /opt/jboss/wildfly/standalone/deployments/
+
     - name: Update Kubernetes manifest with new image tag
       run: |
         sed -i "s|image: ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:.*|image: ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:${{ github.sha }}|" deployment.yaml
