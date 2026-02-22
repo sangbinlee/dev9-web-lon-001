@@ -72,6 +72,7 @@ jobs:
       run: |
         IMAGE=ghcr.io/${{ github.repository_owner }}/dev9-web-lon-001:${{ github.sha }}
         docker build -t $IMAGE .
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin		
         docker push $IMAGE
 
     - name: Check deployments directory inside container
