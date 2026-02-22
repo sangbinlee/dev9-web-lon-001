@@ -18,3 +18,4 @@ FROM quay.io/wildfly/wildfly:latest
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war
 
+COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war
