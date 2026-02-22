@@ -15,4 +15,6 @@ FROM quay.io/wildfly/wildfly:latest
 #ENV JAVA_OPTS="-Djava.util.logging.manager=org.jboss.logmanager.LogManager \
 #               -javaagent:/opt/jboss/wildfly/jmx_prometheus_javaagent.jar=9404:/opt/jboss/wildfly/config.yml"
 
-COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/
+COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
+#COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war
+
