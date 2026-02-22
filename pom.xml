@@ -16,9 +16,19 @@
 		<!-- 공통 의존성은 parent에서 상속 -->
 	</dependencies>
 
+
 	<build>
 		<finalName>lon</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<warName>lon</warName>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
-
 
 </project>
