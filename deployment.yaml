@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wildfly-app
-          image: ghcr.io/sangbinlee/dev9-web-lon-001:a8b35d2165ffc587cbe4783cf1f3ff383ea7b88f
+          image: ghcr.io/sangbinlee/dev9-web-lon-001:bad314a978f0655d8e9cef74bd54786eba0f7c89
           ports:
             - containerPort: 8080
             - containerPort: 9404
