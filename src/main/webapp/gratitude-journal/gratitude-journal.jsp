@@ -23,7 +23,7 @@
 <body>
 
 <div class="container">
-    <h1>🌿 세 줄 감사 일기 (자동 배포 테스트 success !!!)</h1>
+    <h1>🌿 세 줄 감사 일기 (자동 배포 테스트 success ???????????????????)</h1>
 
     <div id="loginSection">
         <p style="text-align: center;">나만의 일기장을 클라우드에 저장하세요.</p>
@@ -55,7 +55,7 @@
         	{
             	provider: 'google',
             	options: {
-					redirectTo: 'https://diary.dev9.shop/dev9-web-lon-001-0.0.1-SNAPSHOT/gratitude-journal/gratitude-journal.jsp'
+					redirectTo: 'https://diary.dev9.shop/lon/gratitude-journal/gratitude-journal.jsp'
 				}
             }
         );
