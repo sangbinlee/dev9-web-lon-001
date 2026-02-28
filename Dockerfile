@@ -1,5 +1,6 @@
 #FROM quay.io/wildfly/wildfly:latest
-FROM quay.io/wildfly/wildfly:latest-legacy
+#FROM quay.io/wildfly/wildfly:latest-legacy
+FROM quay.io/wildfly/wildfly:26.1.2.Final
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
 #Fatal glibc error: CPU does not support x86-64-v2
