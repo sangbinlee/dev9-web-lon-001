@@ -23,7 +23,7 @@
 <body>
 
 <div class="container">
-    <h1>🌿 세 줄 감사 일기 (자동 배포 테스트 success ???????????????????)</h1>
+    <h1>🌿 세 줄 감사 일기 (자동 배포 테스트 success wildfly 26버전으로 배포함)</h1>
 
     <div id="loginSection">
         <p style="text-align: center;">나만의 일기장을 클라우드에 저장하세요.</p>
