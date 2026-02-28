@@ -1,4 +1,8 @@
-FROM quay.io/wildfly/wildfly:latest
+#FROM quay.io/wildfly/wildfly:latest
+FROM quay.io/wildfly/wildfly:latest-legacy
+COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
+#   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
+#Fatal glibc error: CPU does not support x86-64-v2
 
 # Prometheus JMX Agent
 #COPY jmx_prometheus_javaagent-0.20.0.jar /opt/jboss/wildfly/jmx_prometheus_javaagent.jar
@@ -17,7 +21,6 @@ FROM quay.io/wildfly/wildfly:latest
 
 
 
-COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war
 
 #COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war

@@ -92,4 +92,27 @@ jobs:
         git pull --rebase https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} main
         git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
 
- 
+#    - name: Commit and Push updated manifest
+#      run: |
+#        git config --global user.name "github-actions[bot]"
+#        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+#        git add deployment.yaml
+#        git commit -m "Update image tag to ${{ github.sha }}"
+#        git push
+#    - name: Set up kubectl
+#      uses: azure/setup-kubectl@v3
+#      with:
+#        version: 'latest'
+#
+#    - name: Configure K8s credentials
+#      run: echo "${{ secrets.KUBE_CONFIG }}" > kubeconfig.yaml
+#      env:
+#        KUBECONFIG: kubeconfig.yaml
+#
+#    - name: Deploy to Kubernetes
+#      run: |
+#        kubectl apply -f deployment.yaml
+#        kubectl rollout status deployment/wildfly-app
+#      working-directory: .
+#      env:
+#        KUBECONFIG: kubeconfig.yaml
