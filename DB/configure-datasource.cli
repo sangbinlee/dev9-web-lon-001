@@ -2,6 +2,6 @@ data-source add \
   --name=MySqlDS \
   --jndi-name=java:/jboss/datasources/MySqlDS \
   --driver-name=mysql \
-  --connection-url=jdbc:mysql://mysql-service:3306/wpdb \
+  --connection-url=jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/${env.MYSQL_DATABASE} \
   --user-name=${env.MYSQL_USER} \
   --password=${env.MYSQL_PASSWORD}

@@ -11,12 +11,12 @@ USER root
 ADD DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 ADD DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 ADD DB/configure-datasource.cli /opt/wildfly/configure-datasource.cli
+COPY DB/entrypoint.sh /opt/wildfly/entrypoint.sh
+RUN chmod +x /opt/wildfly/entrypoint.sh
+
 
 USER jboss
-RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
-
-
-
+# RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
 
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
