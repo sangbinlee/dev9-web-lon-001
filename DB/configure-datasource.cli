@@ -1,0 +1,7 @@
+data-source add \
+  --name=MySqlDS \
+  --jndi-name=java:/jboss/datasources/MySqlDS \
+  --driver-name=mysql \
+  --connection-url=jdbc:mysql://mysql-service:3306/mydb \
+  --user-name=${env.DB_USER} \
+  --password=${env.DB_PASSWORD}

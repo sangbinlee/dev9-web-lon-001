@@ -1,3 +1,24 @@
+# 1. Secret (민감한 값: username, password)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-db-secret
+type: Opaque
+stringData:
+  username: wpuser
+  password: wppass
+---
+# 2. ConfigMap (일반 설정: host, port, database)
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-db-config
+data:
+  MYSQL_HOST: mysql-service
+  MYSQL_PORT: "3306"
+  MYSQL_DATABASE: wpdb
+---
+# 3. WildFly Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,15 +36,41 @@ spec:
         app: wildfly-app
     spec:
       containers:
-        - name: wildfly-app
-          image: ghcr.io/sangbinlee/dev9-web-lon-001:17d5249e845bc3ac175554559c5d7eb05e2cbcb9
-          ports:
-            - containerPort: 8080
-            - containerPort: 9404
-          env:
-            - name: JAVA_OPTS
-              value: "-Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+      - name: wildfly-app
+        image: ghcr.io/sangbinlee/dev9-web-lon-001:17d5249e845bc3ac175554559c5d7eb05e2cbcb9
+        ports:
+        - containerPort: 8080
+        - containerPort: 9404
+        env:
+        - name: JAVA_OPTS
+          value: "-Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: my-db-secret
+              key: username
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-db-secret
+              key: password
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: my-db-config
+              key: MYSQL_HOST
+        - name: MYSQL_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: my-db-config
+              key: MYSQL_PORT
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: my-db-config
+              key: MYSQL_DATABASE
 ---
+# 4. Service
 apiVersion: v1
 kind: Service
 metadata:
@@ -44,6 +91,7 @@ spec:
       name: metrics
   type: ClusterIP
 ---
+# 5. Ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -68,6 +116,7 @@ spec:
             port:
               number: 80
 ---
+# 6. HorizontalPodAutoscaler
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
