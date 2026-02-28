@@ -8,9 +8,9 @@
 FROM quay.io/wildfly/wildfly:34.0.1.Final-jdk21
 
 USER root
-ADD .DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
-ADD .DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
-ADD .DB/configure-datasource.cli /opt/wildfly/configure-datasource.cli
+ADD DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+ADD DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+ADD DB/configure-datasource.cli /opt/wildfly/configure-datasource.cli
 
 USER jboss
 RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
