@@ -4,8 +4,8 @@
 #FROM quay.io/wildfly/wildfly:26.1.2.Final
 #jdk 11 버전까지만 지원하므로 jdk 21 버전지원하는 이미지 변경해야함. -
 
-# WildFly 30.0.0.Final with JDK 21
-FROM quay.io/wildfly/wildfly:30.0.0.Final-jdk21
+# WildFly 34.0.1.Final with JDK 21
+FROM quay.io/wildfly/wildfly:34.0.1.Final-jdk21
 
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
