@@ -15,7 +15,7 @@ COPY ./DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/b
 COPY ./DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 
 COPY ./DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
-RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/wildfly/configure-datasource.cli
+#RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/wildfly/configure-datasource.cli
 # datasource 설정 위해 root 권한으로 변경 후 mysql 커넥터와 module.xml 추가
 #USER root
 
