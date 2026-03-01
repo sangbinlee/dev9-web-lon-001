@@ -1,0 +1,58 @@
+#Fatal glibc error: CPU does not support x86-64-v2
+# 최신 cpu 로 x86-64-v2 아키텍처 지원하는 경우만 사용가능한 이미지
+#FROM quay.io/wildfly/wildfly:latest
+
+#jdk 11 버전까지만 지원하므로 jdk 21 버전 지원 안하는 이미지
+#FROM quay.io/wildfly/wildfly:26.1.2.Final
+
+# WildFly 34.0.1.Final with JDK 21
+#FROM quay.io/wildfly/wildfly:34.0.1.Final-jdk21
+FROM jboss/wildfly:34.0.1.Final
+
+# 환경변수 기본값 설정 (운영 시 docker run -e 로 덮어쓰기 가능)
+ENV MYSQL_HOST=db \
+    MYSQL_PORT=3306 \
+	MYSQL_DATABASE=londb \
+	MYSQL_USER=lonuser \
+	MYSQL_PASSWORD=lonpass
+
+COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
+#   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
+
+COPY ./DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+COPY ./DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+
+COPY ./DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
+#RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/wildfly/configure-datasource.cli
+# datasource 설정 위해 root 권한으로 변경 후 mysql 커넥터와 module.xml 추가
+
+USER root
+COPY DB/entrypoint.sh /opt/jboss/wildfly/entrypoint.sh
+RUN chmod +x /opt/jboss/wildfly/entrypoint.sh
+ENTRYPOINT ["/opt/jboss/wildfly/entrypoint.sh"]
+
+USER jboss
+# RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
+
+
+
+# Prometheus JMX Agent
+#COPY jmx_prometheus_javaagent-0.20.0.jar /opt/jboss/wildfly/jmx_prometheus_javaagent.jar
+#COPY config.yml /opt/jboss/wildfly/config.yml
+
+# JBoss LogManager 추가
+#COPY jboss-logmanager-2.1.17.Final.jar \
+#	/opt/jboss/wildfly/modules/system/layers/base/org/jboss/logmanager/main/
+#
+#COPY module.xml \
+#	/opt/jboss/wildfly/modules/system/layers/base/org/jboss/logmanager/main/
+
+
+#ENV JAVA_OPTS="-Djava.util.logging.manager=org.jboss.logmanager.LogManager \
+#               -javaagent:/opt/jboss/wildfly/jmx_prometheus_javaagent.jar=9404:/opt/jboss/wildfly/config.yml"
+
+
+
+#COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war
+
+#COPY target/dev9-web-lon-001-0.0.1-SNAPSHOT.war /opt/jboss/wildfly/standalone/deployments/lon.war
