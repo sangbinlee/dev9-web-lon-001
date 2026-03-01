@@ -1,6 +1,6 @@
 # MySQL 드라이버 모듈 추가
 module add --name=com.mysql \
-           --resources=/opt/jboss/wildfly/standalone/deployments/mysql-connector-j-8.0.33.jar \
+           --resources=/opt/jboss/wildfly/standalone/deployments/mysql-connector-j-9.5.0.jar \
            --dependencies=javax.api,javax.transaction.api
 
 # 데이터소스 등록 (환경변수 사용)
@@ -10,4 +10,4 @@ data-source add \
     --connection-url=jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/${env.MYSQL_DATABASE} \
     --user-name=${env.MYSQL_USER} \
     --password=${env.MYSQL_PASSWORD} \
-    --jndi-name=java:/jdbc/MySqlDS
+    --jndi-name=java:java:jboss/datasources/MySqlDS
