@@ -55,7 +55,6 @@
 
 		initCtx = new InitialContext();
 		ds = (DataSource) initCtx.lookup("java:jboss/datasources/MySqlDS");
-// 		ds = (DataSource) initCtx.lookup("java:/MySqlDS");
 		conn = ds.getConnection();
 
 		if (conn != null) {

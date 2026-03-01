@@ -5,7 +5,7 @@
 )
 
 /subsystem=datasources/data-source=MySqlDS:add(\
-    jndi-name=java:/jboss/datasources/MySqlDS,\
+    jndi-name=java:jboss/datasources/MySqlDS,\
     driver-name=mysql,\
     connection-url=jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/${env.MYSQL_DATABASE},\
     user-name=${env.MYSQL_USER},\
