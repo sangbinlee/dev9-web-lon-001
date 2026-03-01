@@ -1,0 +1,14 @@
+/subsystem=datasources/jdbc-driver=mysql:add(\
+    driver-name=mysql,\
+    driver-module-name=com.mysql,\
+    driver-class-name=com.mysql.cj.jdbc.Driver\
+)
+
+/subsystem=datasources/data-source=MySqlDS:add(\
+    jndi-name=java:jboss/datasources/MySqlDS,\
+    driver-name=mysql,\
+    connection-url=jdbc:mysql://${env.MYSQL_HOST}:${env.MYSQL_PORT}/${env.MYSQL_DATABASE},\
+    user-name=${env.MYSQL_USER},\
+    password=${env.MYSQL_PASSWORD},\
+    enabled=true\
+)
