@@ -1,26 +1,28 @@
+#Fatal glibc error: CPU does not support x86-64-v2
+# 최신 cpu 로 x86-64-v2 아키텍처 지원하는 경우만 사용가능한 이미지
 #FROM quay.io/wildfly/wildfly:latest
-#FROM quay.io/wildfly/wildfly:latest-legacy
 
+#jdk 11 버전까지만 지원하므로 jdk 21 버전 지원 안하는 이미지
 #FROM quay.io/wildfly/wildfly:26.1.2.Final
-#jdk 11 버전까지만 지원하므로 jdk 21 버전지원하는 이미지 변경해야함. -
 
 # WildFly 34.0.1.Final with JDK 21
 FROM quay.io/wildfly/wildfly:34.0.1.Final-jdk21
 
+# datasource 설정 위해 root 권한으로 변경 후 mysql 커넥터와 module.xml 추가
 USER root
 ADD DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 ADD DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+
 ADD DB/configure-datasource.cli /opt/wildfly/configure-datasource.cli
 COPY DB/entrypoint.sh /opt/wildfly/entrypoint.sh
 RUN chmod +x /opt/wildfly/entrypoint.sh
-
 
 USER jboss
 # RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
 
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
-#Fatal glibc error: CPU does not support x86-64-v2
+
 
 # Prometheus JMX Agent
 #COPY jmx_prometheus_javaagent-0.20.0.jar /opt/jboss/wildfly/jmx_prometheus_javaagent.jar
