@@ -15,4 +15,4 @@ COPY ./DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
 
 COPY --chmod=755 DB/entrypoint.sh /opt/jboss/wildfly/entrypoint.sh
 
-ENTRYPOINT ["/opt/jboss/wildfly/entrypoint.sh"]
+#ENTRYPOINT ["/opt/jboss/wildfly/entrypoint.sh"]
