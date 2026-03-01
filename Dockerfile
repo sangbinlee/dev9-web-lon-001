@@ -15,14 +15,15 @@ COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 
 # datasource 설정 위해 root 권한으로 변경 후 mysql 커넥터와 module.xml 추가
 USER root
+
 ADD DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 ADD DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 
-ADD DB/configure-datasource.cli /opt/wildfly/configure-datasource.cli
-COPY DB/entrypoint.sh /opt/wildfly/entrypoint.sh
-RUN chmod +x /opt/wildfly/entrypoint.sh
+ADD DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
+COPY DB/entrypoint.sh /opt/jboss/wildfly/entrypoint.sh
+RUN chmod +x /opt/jboss/wildfly/entrypoint.sh
 
-USER jboss
+#USER jboss
 # RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
 
 
