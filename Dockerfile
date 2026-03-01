@@ -11,13 +11,15 @@ FROM quay.io/wildfly/wildfly:34.0.1.Final-jdk21
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 #   sangbinlee9@k8s-master1:~$ kubectl logs wildfly-app-7875499fc8-7b89f
 
+
+ADD ./DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+ADD ./DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
+
 COPY ./DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
 RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/wildfly/configure-datasource.cli
 # datasource 설정 위해 root 권한으로 변경 후 mysql 커넥터와 module.xml 추가
 #USER root
 
-ADD ./DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
-ADD ./DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 
 #COPY DB/entrypoint.sh /opt/jboss/wildfly/entrypoint.sh
 #RUN chmod +x /opt/jboss/wildfly/entrypoint.sh
