@@ -1,4 +1,4 @@
-FROM jboss/wildfly:34.0.1.Final
+FROM quay.io/wildfly/wildfly:34.0.1.Final-jdk21
 
 # 환경변수 기본값 설정 (운영 시 docker run -e 로 덮어쓰기 가능)
 ENV MYSQL_HOST=db \
