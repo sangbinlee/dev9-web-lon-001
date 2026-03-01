@@ -9,7 +9,7 @@ ENV MYSQL_HOST=db \
 
 COPY target/lon.war /opt/jboss/wildfly/standalone/deployments/lon.war
 
-COPY ./DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/standalone/deployments/
+COPY ./DB/mysql-connector-j-9.5.0.jar /opt/jboss/wildfly/modules/system/layers/base/com/mysql/main/
 
 COPY ./DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
 
