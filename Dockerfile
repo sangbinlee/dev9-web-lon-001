@@ -17,12 +17,13 @@ COPY ./DB/module.xml /opt/jboss/wildfly/modules/system/layers/base/com/mysql/mai
 COPY ./DB/configure-datasource.cli /opt/jboss/wildfly/configure-datasource.cli
 #RUN /opt/jboss/wildfly/bin/jboss-cli.sh --file=/opt/jboss/wildfly/configure-datasource.cli
 # datasource 설정 위해 root 권한으로 변경 후 mysql 커넥터와 module.xml 추가
-#USER root
 
+USER root
 COPY DB/entrypoint.sh /opt/jboss/wildfly/entrypoint.sh
 RUN chmod +x /opt/jboss/wildfly/entrypoint.sh
 ENTRYPOINT ["/opt/jboss/wildfly/entrypoint.sh"]
-#USER jboss
+
+USER jboss
 # RUN /opt/wildfly/bin/jboss-cli.sh --file=/opt/wildfly/configure-datasource.cli
 
 
