@@ -135,9 +135,17 @@
                     <driver>h2</driver>
                     <security user-name="sa" password="sa"/>
                 </datasource>
+                <datasource jndi-name="java:jboss/datasources/MySqlDS" pool-name="MySqlDS" enabled="true" use-ccm="true">
+                    <connection-url>jdbc:mysql://192.168.0.241:3306/wpdb?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC</connection-url>
+                    <driver>mysql</driver>
+                    <security user-name="wpuser" password="wppass"/>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="mysql" module="com.mysql">
+                        <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
                     </driver>
                 </drivers>
             </datasources>
