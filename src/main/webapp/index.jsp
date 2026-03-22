@@ -34,6 +34,11 @@
 			<td>oz</td>
 			<td><a href="test.jsp">test</a></td>
 		</tr>
+		<tr>
+			<td>1</td>
+			<td>oz</td>
+			<td><a href="paypal">PayPal 결제 연동</a></td>
+		</tr>
 	</table>
 </body>
 </html>

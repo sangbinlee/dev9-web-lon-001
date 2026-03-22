@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.dev9</groupId>
-		<artifactId>dev9-web-lon</artifactId>
+		<artifactId>dev9-parent-web-lon</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath /> <!-- 로컬 경로 참조 제거 -->
 	</parent>
@@ -11,9 +11,10 @@
 	<name>dev9-web-lon-001</name>
 	<description>dev9-web-lon-001</description>
 
-
 	<dependencies>
 		<!-- 공통 의존성은 parent에서 상속 -->
+
+
 	</dependencies>
 
 
