@@ -35,6 +35,15 @@ spec:
       labels:
         app: wildfly-app
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: NotIn
+                values:
+                - k8s-worker4
       containers:
       - name: wildfly-app
         image: ghcr.io/sangbinlee/dev9-web-lon-001:3e407aa30e9354898f1d2ce479d482da3c08e1d9
