@@ -46,7 +46,7 @@ spec:
                 - k8s-worker4
       containers:
       - name: wildfly-app
-        image: ghcr.io/sangbinlee/dev9-web-lon-001:3e407aa30e9354898f1d2ce479d482da3c08e1d9
+        image: ghcr.io/sangbinlee/dev9-web-lon-001:934e492098ba1563dbe1514bd56d610f1e61b0df
         ports:
         - containerPort: 8080
         - containerPort: 9404
